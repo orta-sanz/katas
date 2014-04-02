@@ -4,25 +4,28 @@ $(document).ready(function() {
 
 	function onTodoListo() {
 		var template = Handlebars.compile(plantilla);
-		$('body').append(template(datos[0]));
+		for (var i in datos) {
+			$('body').append(template(datos[i]));
+		}
 	}
 
 	$.ajax({
 		dataType: 'json',
-		url: 'http://www.oxik.net/proyectos/appAlmonteAvanza/www/api/noticias'
+		url: 'http://www.oxik.net/proyectos/appAlmonteAvanza/www/api/noticias',
 		success: function(data) {
 			console.log('cargado json');
 			datos = data;
 			plantilla && onTodoListo();
-		},
+			console.log(data);
+		}
 	})
 
 	$.ajax({
-		url: 'js/assets/plantilla.html'
+		url: 'js/assets/plantilla.html',
 		success: function(plt) {
 			console.log('carga la plantilla');
 			plantilla = plt;
 			datos && onTodoListo();
-		},
+		}
 	})
 });
