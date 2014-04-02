@@ -4,9 +4,7 @@ $(document).ready(function() {
 
 	function onTodoListo() {
 		var template = Handlebars.compile(plantilla);
-		for (var i in datos) {
-			$('body').append(template(datos[i]));
-		}
+		$('body').append(template(datos));
 	}
 
 	$.ajax({
