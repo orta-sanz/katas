@@ -6,7 +6,6 @@ module.export = $(document).ready(function() {
 	var plantilla = require('../plantillas/plantilla_noticias.hbs');
 
 	function onTodoListo() {
-		//var template = Handlebars.compile(plantilla);
 		$('body').append(plantilla({noticia: datos}));
 	}
 
@@ -20,15 +19,4 @@ module.export = $(document).ready(function() {
 			console.log(data);
 		}
 	})
-
-	mensajito('mola');
-
-	/*$.ajax({
-		url: 'plantilla/plantilla_maxima.js',
-		success: function(plt) {
-			console.log('carga la plantilla');
-			plantilla = plt;
-			datos && onTodoListo();
-		}
-	})*/
 });
