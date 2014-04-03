@@ -1,12 +1,13 @@
 var $ = require('jquery');
+var Handlebars = require('handlebars');
 
 module.export = $(document).ready(function() {
 	var datos;
-	var plantilla;
+	var plantilla = require('../plantillas/plantilla_noticias.hbs');
 
 	function onTodoListo() {
-		var template = Handlebars.compile(plantilla);
-		$('body').append(template(datos));
+		//var template = Handlebars.compile(plantilla);
+		$('body').append(plantilla({noticia: datos}));
 	}
 
 	$.ajax({
@@ -20,12 +21,14 @@ module.export = $(document).ready(function() {
 		}
 	})
 
-	$.ajax({
-		url: 'plantillas/plantilla.html',
+	mensajito('mola');
+
+	/*$.ajax({
+		url: 'plantilla/plantilla_maxima.js',
 		success: function(plt) {
 			console.log('carga la plantilla');
 			plantilla = plt;
 			datos && onTodoListo();
 		}
-	})
+	})*/
 });

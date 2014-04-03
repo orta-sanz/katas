@@ -19,9 +19,9 @@ $(document).ready(function() {
 	})
 
 	$.ajax({
-		url: 'js/assets/plantilla.html',
+		url: 'js/assets/ptl.js',
 		success: function(plt) {
-			console.log('carga la plantilla');
+			console.log(plt);
 			plantilla = plt;
 			datos && onTodoListo();
 		}

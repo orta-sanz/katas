@@ -4,14 +4,13 @@ var browserify 	= require('gulp-browserify');
 var hbsfy		= require('hbsfy');
 var uglify 		= require('gulp-uglify');
 var concat 		= require('gulp-concat');
+var handlebars 	= require('gulp-handlebars');
 
-gulp.task('default', function() {
-	console.log('Vamos que nos vamos');
-});
+gulp.task('default', ['scripts', 'stylus']);
 
 gulp.task('scripts', function() {
 	console.log('cambios en script!');
-	gulp.src('assets/js/*.js')
+	return gulp.src('assets/js/*.js')
 		.pipe(browserify({
 			transform: ['hbsfy']
 		}))
@@ -21,7 +20,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('stylus', function() {
-	gulp.src('assets/css/*.styl')
+	return gulp.src('assets/css/*.styl')
 		.pipe(stylus({
 			import: ['nib'],
 			use: ['nib']
@@ -30,8 +29,9 @@ gulp.task('stylus', function() {
 });
 
 gulp.task('plantilla', function() {
-	gulp.src('assets/plantillas/*.hbs')
-
+	return gulp.src('assets/plantillas/*.hbs')
+		.pipe(handlebars())
+		.pipe(gulp.dest('plantilla/'))
 })
 
 gulp.watch('assets/css/*.styl', ['stylus']);
