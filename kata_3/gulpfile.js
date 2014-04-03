@@ -1,7 +1,6 @@
 var gulp		= require('gulp');
 var stylus		= require('gulp-stylus');
 var browserify 	= require('gulp-browserify');
-var hbsfy		= require('hbsfy');
 var uglify 		= require('gulp-uglify');
 var concat 		= require('gulp-concat');
 var handlebars 	= require('gulp-handlebars');
@@ -9,13 +8,12 @@ var handlebars 	= require('gulp-handlebars');
 gulp.task('default', ['scripts', 'stylus']);
 
 gulp.task('scripts', function() {
-	console.log('cambios en script!');
-	return gulp.src('assets/js/*.js')
+	return gulp.src('assets/js/principal.js')
 		.pipe(browserify({
 			transform: ['hbsfy']
 		}))
 		.pipe(uglify())
-		.pipe(concat('script.js'))
+		//.pipe(concat('script.js'))
 		.pipe(gulp.dest('js/'))
 });
 
@@ -30,8 +28,7 @@ gulp.task('stylus', function() {
 
 gulp.task('plantilla', function() {
 	return gulp.src('assets/plantillas/*.hbs')
-		.pipe(handlebars())
-		.pipe(gulp.dest('plantilla/'))
+		.pipe(gulp.dest('plantillas/'))
 })
 
 gulp.watch('assets/css/*.styl', ['stylus']);
