@@ -1,0 +1,1 @@
+La idea de este Kata es obtener informacion sobre los miembros (watchers) de una página-proyecto en indieDB y mostrar al usuario una tabla con información sobre sus seguidores.
