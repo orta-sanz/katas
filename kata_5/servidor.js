@@ -5,10 +5,9 @@ function iniciar(route, manejador) {
 	function servidor(peticion, respuesta) {
 
 		var ruta = url.parse(peticion.url).pathname;
-		console.log('Petición realizada para ' + ruta);
+		console.log('Petición para ' + ruta + ' recibida');
 
-		route(manejador, ruta);
-		//console.log('Este es el manejador que tenemos: ' + manejador);
+		route(ruta, manejador);
 
 		respuesta.writeHead(200, {'Content-Type': 'text/html'});
 		respuesta.write('Hola babuchas');
