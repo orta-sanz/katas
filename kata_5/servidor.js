@@ -1,19 +1,22 @@
-var http = require('http');
-var url = require ('url');
+var http 		= require('http');
+var url 		= require ('url');
 
 function iniciar(route, manejador) {
 	function servidor(peticion, respuesta) {
 
+		var datosRecibidos = '';
 		var ruta = url.parse(peticion.url).pathname;
-		console.log('Petición para ' + ruta + ' recibida');
 
-		route(ruta, manejador);
+		peticion.setEncoding('utf8');
 
-		respuesta.writeHead(200, {'Content-Type': 'text/html'});
-		respuesta.write('Hola babuchas');
-		respuesta.end();
+		peticion.addListener('data', function(trozoRecibido) {
+			datosRecibidos += trozoRecibido;
+		});
+
+		peticion.addListener('end', function() {
+			route(ruta, manejador, respuesta, datosRecibidos);
+		})
 	}
-
 	http.createServer(servidor).listen(8888);
 	console.log('Se ha iniciado el servidor');
 }

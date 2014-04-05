@@ -5,5 +5,6 @@ var requestHandlers		= require('./requestHandlers');
 var manejador = {};
 manejador['/'] 				= requestHandlers.iniciar;
 manejador['/registrar'] 	= requestHandlers.registrar;
+manejador['/listado']		= requestHandlers.listado;
 
 server.iniciar(router.route, manejador);
