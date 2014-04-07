@@ -30,5 +30,5 @@ gulp.task('stylus', function() {
 })*/
 
 gulp.watch('assets/css/*.styl', ['stylus']);
-gulp.watch('assets/scripts/script.js', ['scripts']);
+gulp.watch('assets/scripts/*.js', ['scripts']);
 //gulp.watch('assets/plantillas/*.hbs' ['plantilla']);
