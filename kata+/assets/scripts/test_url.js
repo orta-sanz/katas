@@ -1,9 +1,10 @@
-var $		= require('jquery');
-//var require = require('request');
+var $			= require('jquery');
+var scraping 	= require('./scraping');
 
 function comprueba(enlace) {
-	// Le echamos un cable al usuario
-	enlace = ayuda(enlace);
+	if (enlace.split('/')[0] != 'http:') {
+		enlace = 'http://' + enlace;
+	}
 
 	$.ajax({
 		type: 'GET',
@@ -12,7 +13,7 @@ function comprueba(enlace) {
 
 		success: function() {
 			console.log('La pagina responde');
-			console.log(enlace);
+			busca_watchers(enlace);
 		},
 
 		error: function(xmlHttpRequest, estado, error) {
@@ -23,19 +24,29 @@ function comprueba(enlace) {
 			$('#advert').css('visibility', 'visible');
 		}
 	})
-}
+};
 
-function ayuda(url) {
-	var tmp = url;
-	if (url.split('/')[0] != 'http:') {
-		tmp = 'http://' + tmp;
-	}
+function busca_watchers(enlace) {
+	enlace += '/watchers';
+	$.ajax({
+		type: 'GET',
+		url: enlace,
+		timeout: 6000,
 
-	if (url.split('/')[5] != 'watchers') {
-		tmp = tmp + '/watchers';
-	}
+		success: function() {
+			console.log('Se ha encontrado la pagina watchers');
+			//console.log(html);
+			scraping.recopila(enlace);
+		},
 
-	return tmp;
+		error: function(xmlHttpRequest, estado, error) {
+			console.log('La pagina no responde');
+			if (estado === 'timeout') {
+				console.log('Timeout en respuesta');
+			}
+			$('#advert').css('visibility', 'visible');
+		}
+	})
 }
 
 exports.comprueba = comprueba;
