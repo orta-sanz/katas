@@ -19,22 +19,33 @@ function recopila (enlace) {
 }
 
 function almacena (pagina) {
-	var saco = {};
+	var paises = {};
+	var banderas = {};
 
 	$(pagina).find('h4').each(function(index, cosa) {
 
 		var pais = $(cosa).find('img').attr('alt');
+		var img = $(cosa).find('img').attr('src');
+
 		var existe = false;
 
-		if (pais in saco) {
-			saco[pais] += 1;
+		if (pais in paises) {
+			paises[pais] += 1;
 		}
 		else {
-			saco[pais] = 1;
+			paises[pais] = 1;
+			banderas[pais] = img;
 		}
 	})
 
-	console.log(saco);
+	console.log(paises);
+	console.log(banderas);
+
+	muestra(paises, banderas);
+}
+
+function muestra(paises, banderas) {
+	
 }
 
 exports.recopila = recopila;
