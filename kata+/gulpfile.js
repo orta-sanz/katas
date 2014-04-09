@@ -1,8 +1,8 @@
-var gulp 		= require('gulp');
-var stylus		= require('gulp-stylus');
-var browserify 	= require('gulp-browserify');
-var uglify 		= require('gulp-uglify');
-var handlebars 	= require('gulp-handlebars');
+var gulp 			= require('gulp');
+var stylus			= require('gulp-stylus');
+var browserify 		= require('gulp-browserify');
+var uglify 			= require('gulp-uglify');
+var handlebars 		= require('gulp-handlebars');
 
 gulp.task('default', ['scripts'] ['stylus']);
 

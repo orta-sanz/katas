@@ -1,4 +1,4 @@
-var $ = require('jquery');
+var $ 			= require('jquery');
 
 var paises = {};
 
@@ -45,7 +45,13 @@ function almacena (pagina) {
 }
 
 function muestra(paises, banderas) {
-	
+	$('body').empty();
+	var plantilla = require ('../plantillas/resultado.hbs');
+	$('body').flowtype({
+		minimun: 500,
+		maximum: 1200
+	});
+	$('body').append(plantilla({paises: paises},{banderas: banderas}));
 }
 
 exports.recopila = recopila;

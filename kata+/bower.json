@@ -1,0 +1,20 @@
+{
+  "name": "kata+",
+  "version": "0.0.0",
+  "homepage": "https://github.com/orta-sanz/katas",
+  "authors": [
+    "orta-sanz <orta.sanz.93@gmail.com>"
+  ],
+  "description": "Gestionando por paquetes fontend",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flowtype": "*",
+  }
+}
