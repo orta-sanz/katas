@@ -4,6 +4,7 @@ var browserify 	= require('gulp-browserify');
 var uglify 		= require('gulp-uglify');
 var concat 		= require('gulp-concat');
 var handlebars 	= require('gulp-handlebars');
+//var nib 		= require('nib');
 
 gulp.task('default', ['scripts', 'stylus']);
 
@@ -19,10 +20,7 @@ gulp.task('scripts', function() {
 
 gulp.task('stylus', function() {
 	return gulp.src('assets/css/*.styl')
-		.pipe(stylus({
-			import: ['nib'],
-			use: ['nib']
-		}))
+		//.pipe(stylus(nib))
 		.pipe(gulp.dest('css/'))
 });
 
